@@ -2,8 +2,23 @@
 @include normalize();
 
 .App {
+  max-width: 800px;
+  margin: auto;
+
   header {
     font-size: 64px;
     text-align: center;
+  }
+
+  .error {
+    background-color: #f88;
+  }
+
+  .Person {
+    border: 1px solid #ccc;
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    max-width: 800px;
   }
 }

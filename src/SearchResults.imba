@@ -1,5 +1,6 @@
 let encodeURIComponent = window:encodeURIComponent
 import store from "./Store"
+import Person from "./Person"
 
 tag SearchResults
   def url
@@ -16,6 +17,9 @@ tag SearchResults
           results:error
       else
         <div.results>
-          "{results:result:count} results"
+          <div.summary>
+            "{results:result:count} results"
+          for result in results:result:results
+            <Person[result]>
 
 export default SearchResults
