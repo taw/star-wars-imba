@@ -1,7 +1,5 @@
 import SearchResults from "./SearchResults"
 
-console.log SearchResults
-
 tag App
   def setup
     @search = ""

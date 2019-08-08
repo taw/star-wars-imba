@@ -7,19 +7,19 @@ tag SearchResults
     "https://swapi.co/api/people/?search={ encodeURIComponent(data) }"
 
   def render
-    let results = store.request(url)
+    let response = store.request(url)
     <self>
-      if results:state == "wait"
+      if response:state == "wait"
         <div.waiting>
           "Waiting..."
-      else if results:state == "error"
+      else if response:state == "error"
         <div.error>
-          results:error
+          response:error
       else
         <div.results>
           <div.summary>
-            "{results:result:count} results"
-          for result in results:result:results
+            "{response:data:count} results"
+          for result in response:data:results
             <Person[result]>
 
 export default SearchResults

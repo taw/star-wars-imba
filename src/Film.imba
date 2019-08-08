@@ -1,17 +1,8 @@
-import store from "./Store"
+import Swapi from "./Swapi"
 
-tag Film
-  def render
-    let results = store.request(data)
-    <self>
-      if results:state == "wait"
-        <span.waiting>
-          "Waiting..."
-      else if results:state == "error"
-        <span.error>
-          results:error
-      else
-        <span>
-          results:result:title
+tag Film < Swapi
+  def render_result(result)
+    <span>
+      result:title
 
 export default Film
