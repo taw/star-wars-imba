@@ -4,7 +4,14 @@ import Person from "./Person"
 
 tag SearchResults
   def url
-    "https://swapi.co/api/people/?search={ encodeURIComponent(data) }"
+    "https://swapi.dev/api/people/?search={ encodeURIComponent(data) }"
+
+  def pluralize(number, singular)
+    let plural = singular + "s"
+    if number === 1
+      "{number} {singular}"
+    else
+      "{number} {plural}"
 
   def render
     let response = store.request(url)
@@ -18,7 +25,7 @@ tag SearchResults
       else
         <div.results>
           <div.summary>
-            "{response:data:count} results"
+            pluralize(response:data:count, "result")
           for result in response:data:results
             <Person[result]>
 
